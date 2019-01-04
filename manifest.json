@@ -1,0 +1,20 @@
+{
+
+  "manifest_version": 2,
+  "name": "jstrisHelper",
+  "version": "1.0",
+
+  "description": "Does assorted things to the Jstris website",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.jezevec10.com/*"],
+      "js": ["jstrisHelper.js"]
+    }
+  ]
+
+}

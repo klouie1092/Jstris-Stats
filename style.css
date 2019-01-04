@@ -1,0 +1,847 @@
+body {
+margin: 0px;
+padding: 0px;
+text-align: center;
+font-size:17px;
+}
+
+#gameFrame{
+margin: 0 auto;
+margin-top:20px;
+margin-bottom:20px;
+position: relative;
+text-align: center;
+width:950px;
+}
+
+#main{
+width: 500px;
+float:left;
+position:relative;
+}
+
+.players{
+float:left;
+width:450px;
+text-align:center;
+margin-bottom:7px;
+position: relative;
+}
+
+#holdCanvas, .holdCanvas{
+float:left;
+margin-right:10px;
+}
+
+#stage{
+border-color:black;
+position: relative;
+width: 248px;
+height: 480px;
+float:left;
+}
+
+.layer{
+position:absolute;
+top:0px;
+left:0px;
+}
+
+.bgLayer{
+z-index:1;
+}
+
+canvas,button{
+user-select: none;
+}
+
+.mainLayer{
+z-index:2;
+outline:none;
+}
+
+.designerBlock{
+width: 284px;
+height: 100%;
+margin: 0 auto;
+}
+
+.colorBar{
+float:left;
+margin-left:4px;
+}
+
+.colorBar canvas{
+cursor: pointer;
+}
+
+.slots .target canvas.mainLayer{
+border:1px solid gold;
+}
+
+.slots .np canvas.bgLayer{
+background-color: #121212;
+}
+
+.slots .target span{
+color: gold;
+}
+
+.slots {
+position: relative;
+width: 450px;
+margin-bottom: 15px;
+margin-top: -15px;
+height: 450px;
+}
+
+.slot{
+position:absolute;
+}
+
+.nm{
+margin-right:0;
+}
+
+.slot span{
+display:block;
+text-align:left;
+overflow: hidden;
+color:white;
+margin-bottom: 1px;
+}
+
+.mp-holdCan, .mp-queueCan{
+position:absolute;
+top:0px;
+border: none !important;
+}
+
+#resultsBox {
+min-height: 125px;
+position: absolute;
+bottom: -7px;
+width: 100%;
+padding-left:13px;
+padding-bottom:35px;
+z-index: 3;
+text-align:left;
+font-size:16px;
+overflow:hidden;
+background-color: #272727;
+color: white;
+}
+
+#lobbyBox {
+position: absolute;
+top: -14px;
+width: 100%;
+padding: 1px 13px 40px 13px;
+z-index: 5;
+text-align:left;
+font-size:16px;
+}
+
+#lobbyContent{
+overflow-y:auto;
+overflow-x:hidden;
+height: 86%;
+}
+
+.lobbyTable{
+border-collapse: collapse;
+width: 98%;
+}
+
+.lobbyTable thead{
+border-bottom: 1px solid white;
+}
+
+.lobbyTable tr{
+cursor:pointer;
+}
+
+.lobbyRow:hover{
+background-color:#888888;
+}
+
+.lobbyTable .modeCol { /*Mode*/
+width:20%;
+min-width:70px;
+}
+.lobbyTable .gamesCol{ /*games*/
+width:15%;
+text-align:right;    
+}
+.lobbyTable .plCol { /*players*/
+width:20%;
+text-align:right;
+}
+
+img.btnIcn{
+width: 16px;
+vertical-align: bottom;
+margin-right: 5px;
+}
+
+.roomListSep{
+border-bottom: 1px solid #555;
+color: #999;
+margin-top: 10px;
+}
+
+/** w o t s **/
+
+h1,h2,h3{
+margin-bottom:3px;
+margin-top: 12px;
+}
+
+h4 {
+margin: 12px 0 1px;
+}
+
+#settingsBox{
+position:absolute;
+z-index:15;
+width:470px;
+height:470px;
+background-color:grey;
+border-color:black;
+top:90px;
+left:50px;
+text-align:left;
+padding: 5px 15px;
+}
+
+#settingsBox table {
+/* border-collapse: collapse; */
+}
+
+#chatBox{
+width:100%;height:150px;overflow-y:auto;text-align:left;
+padding-left: 5px;
+margin-bottom:5px;
+overflow-x: hidden;
+background-color:#1c1c1c;
+color:white;
+}
+
+#chatInput{
+width:392px;
+height:21px;
+background-color: #6b6b6b;
+border: none;
+padding: 3px;
+margin-right: 3px;
+border-radius:0px;
+}
+
+#chatInput::placeholder {
+  color: black;
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+#sendMsg{
+width:55px;
+height:21px;
+}
+
+#chatExpand,#chatLobby{
+position: absolute;
+right: -26px;
+height: 25px;
+width: 26px;
+background-color: #2a2a2a;
+cursor: pointer;
+border-radius: 0px 5px 5px 0px;
+background-size: 20px;
+background-repeat: no-repeat;
+}
+#chatExpand{
+bottom: 44px;
+background-position: 2px;
+}
+#chatLobby{
+bottom: 75px;
+background-position: 3px;
+}
+.relUser{
+color:white;
+}
+.relUser img{
+width: 20px;
+vertical-align: -1px;
+}
+.rch{background-image: url(/res/chat/chat1.png);}
+.rchNew{background-image: url(/res/chat/chat2.png);}
+.lch{background-image: url(/res/chat/chat3.png);}
+.lchNew{background-image: url(/res/chat/chat5.png);}
+.exUp{background-image: url(/res/svg/up.svg);}
+.exDown{background-image: url(/res/svg/down.svg);}
+
+.players canvas {
+border: 1px solid #2C2C2C;
+}
+
+#lobbyBottom, .roomButtons{
+position:absolute;
+bottom:13px;
+}
+
+#lobbyBottom button, .roomButtons button, #settingsBox button{
+margin-right: 6px;
+}
+
+.plusSpec{
+color:#aaa;
+}
+
+#createRoom{
+background-color: #080808;
+height: 530px;
+left: 0px;
+padding-left: 13px;
+position: absolute;
+top: -14px;
+width: 100%;
+z-index: 6;
+text-align:left;
+font-size: 16px;
+}
+#saveData{
+position:absolute;
+width:490px;
+height:220px;
+background-color: #2C2C2C;
+top:0px;
+left:-20px;
+z-index:20;
+padding:20px;
+}
+#saveDataArea{
+width: 400px;
+height: 65px;
+margin-top: 7px;
+}
+#rem{
+display:block;
+}
+
+.absBg {
+height: 100%;
+left: 0;
+position: absolute;
+top: 0;
+width: 100%;
+z-index: -99;
+}
+#fps{
+margin: 0 auto;
+}
+#stats{
+margin-top:13px;color:grey;
+text-align:left;
+margin-left: 111px;
+font-size:15px;
+line-height: 1.15;
+}
+#stats table{
+border:0;
+border-collapse:collapse;
+}
+.ter{
+text-align:right;
+}
+.sval{
+padding-left:10px;
+font-weight:bold;
+}
+#connectStatus{
+color: grey;
+font-size: 10px;
+margin-top: 4px;
+text-align: right;
+}
+
+#saveLink{
+display: block; position: absolute;right: 31px; top: 4px;
+}
+#closeLink{
+display: block; position: absolute;right: 5px; top: 4px;
+}
+
+#buttonsBox{
+margin-left: 97px;
+padding-top: 22px;
+width: 263px;
+}
+
+#rstage {
+float: left;
+margin-left: 8px;
+text-align: left;
+width: 127px;
+}
+
+#practiceMenu{
+background-color: #1c1c1c;
+height:100%;
+padding: 5px 4px 0;
+}
+
+#sprintInfo{
+height:100%;
+padding-top: 5px;
+}
+
+.pract-subopt{
+background-color: #2b2b2b;
+display: inline-block;
+padding: 2px;
+width: 40px;
+}
+
+.pract-subopt:hover{
+background-color: #444444;
+cursor:pointer;
+}
+
+#practice-menu-big{
+top: 144px;
+position: absolute;
+padding: 4px;
+background-color: rgb(28, 28, 28);
+width: 242px;
+display: block;
+z-index:10;
+height:336px
+}
+
+.practice-submenu{
+text-align: center;
+width:100%;
+margin-top: 3px;
+margin-bottom: 5px;
+}
+
+#team-options{
+bottom: 0px;
+position: absolute;
+padding: 4px;
+background-color: rgb(28, 28, 28);
+width: 242px;
+display: block;
+z-index:9;
+height:100px
+}
+#tsArea{
+padding-top: 10px;
+}
+#tsArea button{
+color:white;
+border:3px solid rgb(28, 28, 28);
+height:31px;
+}
+#tsArea button:disabled{
+border:3px solid #33FF00;
+}
+.teamResTag{
+padding: 1px 9px;
+border-radius: 5px;
+}
+#resultsBox tr.spaceBefore>td {
+padding-top: 10px;
+}
+#rInfoBox {
+color: white;
+font-size: 15px;
+line-height: 1.2;
+height: 103px;
+margin-top: 13px;
+cursor:default;
+position:relative;
+}
+
+#teamInfo{
+color: #999999;
+text-align: center;
+position:absolute;
+bottom:1px;
+width:100px;
+}
+#myTeam{
+color:white;
+padding:10px;
+margin-top:10px;
+font-size:15px;
+}
+
+#queueCanvas{
+margin-left:14px;
+}
+
+.prMenuItem {
+background-color: #131313;
+margin-top: 3px;
+padding: 2px;
+position:relative;
+display:block;
+}
+
+.prMenuItem:hover{
+background-color: #373737;
+cursor:pointer;
+}
+
+.unsel{
+-moz-user-select: -moz-none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+
+#lrem,.lrem{
+color: #999999;
+font-size: 32px;
+text-align: center;
+margin-top: 15px;
+}
+#sprintText {
+color: #323232;
+font-size: 14px;
+text-align: center;
+}
+
+.prKey{
+position: absolute;
+right: 5px;
+font-size: 13px;
+top: 3px;
+color: #515151;
+}
+
+
+#tab_controls input[type="text"]:focus, 
+input.keySelect[type="text"]:focus{
+background-color:yellow;
+}
+
+#tab_controls input[type="text"]{
+width:110px;
+}
+
+input[type="text"]{
+border-radius: 4px;
+padding: 3px;
+}
+
+#settingsBox table{
+margin-top:4px;
+}
+
+.chatArea{
+position:relative;
+z-index: 3;
+}
+.infoBoxBottom{
+position:relative;
+background-color: #151515;
+color: white;
+height: 200px;
+left: -8px;
+padding: 0;
+position: absolute;
+top: 0;
+width: 420px;
+}
+.ibContent{
+text-align:left;
+font-size:14px;
+padding: 0 12px;
+}
+#mainInfoBox h1{
+font-size:18px;
+margin-top:11px;
+}
+#mainInfoBox h2{
+font-size: 16px;
+margin-bottom: 1px;
+margin-top: 11px;
+}
+.dbutton{
+text-align:center;
+width:100%;
+margin-top:9px;
+}
+.disclaimer{
+color: #5d5d5d;
+font-size: 11px;
+margin-top: 16px;
+text-align: center;
+}
+#closeIB{
+position:absolute;
+right:8px;
+top:5px;
+}
+.bottomLine{
+color:grey;
+clear:both;
+margin-top:17px;
+}
+.bottomLine a{
+color:grey;
+}
+.settingsDesc{
+display: block;
+font-size: 13px;
+font-style: italic;
+margin-bottom: 8px;
+}
+.ruleDesc{
+color:grey;margin-top:6px;
+}
+select{
+background: #fff;
+height: 25px;
+border-radius:3px;
+font-size: 15px;
+padding:0 2px;
+border:none;
+box-shadow: 0px 0px 30px 20px rgba(255,255,255,0.5) inset,0px 0px 0px 1px #ccc;
+}
+select option,select option:hover{
+padding:4px;
+}
+
+.inputDesc{
+color:grey;
+padding-left:10px;
+}
+
+#attackTable,#comboTable{
+width:210px;
+}
+
+#roomName{
+width:200px;
+}
+
+.more_opt{float:right;margin-right: 15px;}
+						
+.moreTitle h4 {
+margin: 9px 0 9px;
+padding-top: 1px;
+font-size: 16px;
+}
+
+.nameIcon{
+height: 90%;margin-right: 3px;margin-top: -3px;
+}
+
+.teamTag{
+position:absolute;
+text-align:center;
+border-radius:5px;
+}
+
+.emoji{
+width: 1.5em;
+}
+
+/*specific to replayer*/
+.repArea{
+width: 160px; height: 20px;background-color: #090909;border: 1px solid #4e4e4e;
+}
+
+#replayerGameFrame {
+margin: 20px auto;
+position: relative;
+text-align: center;
+width: 520px;
+}
+
+.replayName{
+text-align:center;margin-left:104px;width:245px;font-size:19px;margin-bottom:5px;
+}
+
+.setTab input{
+    margin-left:0.5rem;
+}
+
+/*----*/
+#chatBox .srv{
+color:#9e9e9e;
+}
+
+button {
+background-color: #8e8e8e;
+color:black;
+}
+
+button:disabled{
+color:#606060;
+}
+
+#lobbyBox,#settingsBox{
+background-color: #1c1c1c;
+color:white;
+}
+
+#resultsBox table{
+border-collapse:collapse;
+}
+
+#resultsContent{
+font-size:14px;
+}
+
+#rem{
+color: white;
+}
+
+#showMore{
+position: absolute;
+bottom: 0px;
+left: 0px; width: 100%;
+height: 23px;
+text-align: center;
+background-color: rgb(20, 20, 20);
+cursor: pointer;
+}
+
+#showMore:hover{
+background-color: #575757;
+}
+
+#showMore span{
+display: block;
+margin-top: 2px;
+}
+
+#moreResults{
+background-color: rgb(39, 39, 39);
+color: white;
+min-height: 453px;
+padding: 15px;
+position: absolute;
+text-align: left;
+width: 100%;
+z-index: 11;
+top: -15px;
+max-height: 660px;
+overflow: auto;
+}
+
+#moreResults h1,h2,h3{
+margin-top:7px;
+}
+
+#moreResults table {
+border-collapse: collapse;
+}
+
+#moreClose{
+position: absolute;
+font-size: 18px;
+background-color: rgb(17, 17, 17);
+cursor: pointer;
+padding: 4px 30px;
+right: 6px;
+top: 6px;
+}
+
+#moreClose:hover{
+background-color: #575757;
+}
+
+a{
+color:#00BFFF;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+
+.gCapt{
+position:absolute;
+z-index:3;
+width:100%;
+text-align: center;
+opacity: 0.85;
+background-color: #1c1c1c;
+}
+
+#stats .sval{
+font-family: Verdana, sans-serif;
+}
+
+span.joinLink{
+background-color: #0c0c0c;
+padding: 2px 8px;
+display: inline-block;
+color: greenyellow;
+border-radius: 5px;
+margin: 3px 0px;
+font-family: "Courier New", Courier, monospace;
+font-size: 14px;
+}
+
+.transitionCaption {
+-webkit-transition: all 0.8s ease-out;
+-moz-transition:all 0.8s ease-out
+-o-transition:all 0.8s ease-out;
+transition::all 0.8s ease-out;
+}
+
+.noTransition {
+-webkit-transition-duration: 0s;
+-moz-transition-duration: 0s;
+-o-transition-duration: 0s;
+transition-duration: 0s;
+}
+
+.slIc{
+height: 13px;
+vertical-align: -1px;
+margin-right: 4px;
+}
+
+.slVal{
+font-size:14px;
+}
+
+.ppsTag{
+margin-left:3px;
+font-size:10px;
+font-weight:bold;
+}
+
+.modWindow{
+text-align: left;
+position:absolute;
+top:60px;
+left:0px;
+height: 100%;
+width:100%;
+z-index:100;
+background-color:#101010;
+overflow-y: auto;
+}
+
+@font-face {
+font-family: 'BlockFont';
+src: url('/css/font/jstrismapfont-webfont.woff2') format('woff2'),
+     url('/css/font/jstrismapfont-webfont.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
+.blockFont{
+font-family: 'BlockFont',Arial,sans-serif;
+font-size: 20px;
+}
