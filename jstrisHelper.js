@@ -3,8 +3,9 @@
 
 
 //Functions for later
-function updateDiv(lastTime, bestTime, gamesPlayed, averageTime, ao10){
+function updateDiv(minutesPlayed, lastTime, bestTime, gamesPlayed, averageTime, ao10){
   let temp = '';
+  temp += "Minutes Played: " + minutesPlayed + "<br>";
   temp += "Last Run: " + lastTime + "<br>";
   temp += "Best Run: " + bestTime + "<br>";
   temp += "Games Played: " + gamesPlayed + "<br>";
@@ -19,6 +20,10 @@ function updateDiv(lastTime, bestTime, gamesPlayed, averageTime, ao10){
 function updateStats(inputString){
   //Updates the custom stats page
 
+  //Keeps hands from dying
+  if (minutesPlayed > 60){
+    alert("What the fuck are you doing stop");}
+	
   //First converts the time into seconds
   let temp = inputString.split(":");
   let timeSeconds = 0
@@ -44,10 +49,10 @@ function updateStats(inputString){
     for(let i = 0; i < last10.length; i++){
       sum += last10[i]
     }
-    updateDiv(timeSeconds + "s", bestTime + "s", gamesPlayed, Math.round(averageTime * 1000) / 1000 + "s", Math.round(sum / last10.length*1000)/1000 + "s")
+    updateDiv(minutesPlayed + " minutes", timeSeconds + "s", bestTime + "s", gamesPlayed, Math.round(averageTime * 1000) / 1000 + "s", Math.round(sum / last10.length*1000)/1000 + "s")
   }
   else{
-    updateDiv(timeSeconds + "s", bestTime + "s", gamesPlayed, Math.round(averageTime * 1000) / 1000, "Not Enough Runs Yet")
+    updateDiv(minutesPlayed + " minutes", timeSeconds + "s", bestTime + "s", gamesPlayed, Math.round(averageTime * 1000) / 1000, "Not Enough Runs Yet")
   }
 
 }
@@ -60,10 +65,11 @@ function updateStats(inputString){
 // Finds certain portions of the jstris page that I need to affect
 var targetNode = document.getElementById('chatBox');
 var otherGames = document.getElementById('gameSlots');
-var gamesPlayed = 0
-var bestTime = Infinity
-var averageTime = 10
-var last10 = []
+var gamesPlayed = 0;
+var bestTime = Infinity;
+var averageTime = 10;
+var last10 = [];
+var minutesPlayed = 0;
 
 //Custom text field over the other games in order to display certain statistics
 var statisticsDiv = document.createElement("div");
@@ -82,7 +88,8 @@ updateDiv('No Runs Yet','No Runs Yet',gamesPlayed, 'No Runs Yet', "Not Enough Ru
 
 
 
-
+//Creates the timer function that keeps me from destroying my hands
+setInterval(function(){minutesPlayed++;}, 60000);
 
 // Options for the observer (which mutations to observe)
 var config = { attributes: true, childList: true, subtree: true };
